@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import {LemonComponent} from './lemon/lemon.component';
+import { BlogComponent } from './blog/blog.component';
+import { PermissionsblogComponent } from './permissionsblog/permissionsblog.component';
 
 const routes: Routes = [
-  { path: 'home',        component: HomeComponent },
+  { path: '',        component: HomeComponent },
   { path: 'lemonos',     component: LemonComponent },
-  { path: '',   redirectTo: '/home', pathMatch: 'full' },
+  { path: 'blog',     component: BlogComponent },
+  { path: 'permissionsblog',     component: PermissionsblogComponent },
+  // { path: '',   redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

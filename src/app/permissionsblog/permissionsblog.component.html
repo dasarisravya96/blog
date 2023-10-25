@@ -1,0 +1,107 @@
+<div>
+    <div class="container">
+        <app-navbar></app-navbar>
+        <div class="text-center">
+            <img src="../../assets/images/permissions.png" class="avatar img-fluid">
+            <h2>The Access Alchemy: Role-Based Permissions in EHR Applications</h2>
+            <div class="description"> 
+                <h3>Introduction</h3>
+<p>In the intricate ecosystem of Electronic Health Records (EHR) applications, data is both invaluable and vulnerable. Different types of users, such as providers, billers, and administrators, interact with the system. However, not everyone should have access to all forms of data. How can we build a sophisticated permission structure that keeps data secure while allowing various user types to perform their roles effectively? Welcome to the world of Persona Management in EHR systems, where we design an architecture that assigns permissions to users based on their roles.</p>
+
+<h3>User Hierarchy: An Overview</h3>
+<p>The key to effective data management is defining the hierarchical layers of users and their roles. Here's a simplified diagram to represent the flow:</p>
+<pre>Users -> Personas -> Roles -> Permissions</pre>
+
+<h3>Personas</h3>
+<p>Personas like Providers, Administrators, Mid-level Providers, Nurse-Managers, Registered Nurses, Billers, Office Managers, and Auditors have unique roles in the EHR application.</p>
+
+<h3>Roles</h3>
+<p>Each Persona is associated with various roles, such as "Patient Documents Read," "User Management Write," etc.</p>
+
+<h3>Permissions</h3>
+<p>Roles consist of specific permissions like read (<code>r</code>), write (<code>w</code>), update (<code>u</code>), and delete (<code>d</code>) that correspond to different functionalities or pages in the application.</p>
+<!-- 
+<h3>In-Depth: Roles and Permissions</h3>
+<h4>Example Permission Definitions</h4>
+<p>Let's delve into the kind of roles and permissions we can assign:</p>
+<table border="1">
+  <tr>
+    <th>Roles</th>
+    <th>Permissions</th>
+  </tr>
+  <tr>
+    <td>Patient Documents Read</td>
+    <td><code>doc: r</code></td>
+  </tr>
+  <tr>
+    <td>Patient Documents Write</td>
+    <td><code>doc: r, doc: w</code></td>
+  </tr>
+  <tr>
+    <td>Direct Messages Workqueue</td>
+    <td><code>dirmsg : r, dirmsg : w, dirmsg : u, dirmsg : d</code></td>
+  </tr>
+  <tr>
+    <td>Enhanced Document Viewer Sign</td>
+    <td><code>ehnd : r, ehnd : sgn</code></td>
+  </tr>
+</table> -->
+<!-- 
+<h3>Access Tokens: The Keys to the Kingdom</h3>
+<p>Upon a successful login, an access token is generated containing the user's permissions. This token is then decoded and stored in an <code>ngrx</code> global state, with permissions formatted as:</p>
+<pre><code >userPermissions: &#123; doc: [r, w, u, d], usrmgmt: [r, w, u, d], dirmsg: [r, w, u, d], ehnd: [r, sgn, rsgn] }</code></pre> -->
+
+<h3>Keeping the Castle Secure: Permission Guard and Permission Directive</h3>
+<h3>Permission Guard</h3>
+<p>Permission Guard is a custom route guard designed to authenticate users based on their assigned roles and permissions. It checks whether a user navigating to a particular route has the permission to access that page. If not, they are redirected to the home page.</p>
+
+<h3>Permission Directive</h3>
+<p>The Permission Directive, on the other hand, is used for either hiding or disabling actions based on permissions. When a user has only read access to a page, this directive is added to the action buttons. The directive then checks if the permission exists for the user. If it does, the button or HTML element becomes visible; otherwise, it is not rendered.</p>
+
+<h3>Conclusion</h3>
+<p>Implementing a Persona-based permission architecture in EHR applications is not just about data security but also about operational efficiency. With a complex user base accessing various facets of healthcare data, it's crucial to develop a framework that serves the multi-faceted needs of all personas. Through the effective use of access tokens, Permission Guards, and Permission Directives, you can strike the perfect balance between access and security.</p>
+<hr style="margin-top: 3em;">
+<small><b>Note on Front-End Security in Angular 13</b>
+<p>While the aforementioned architecture provides a robust way to manage access permissions, it's essential to note that all these measures are implemented at the front-end level using Angular 13. This means the back-end must also have corresponding security measures to verify the data requests. Front-end security is just one layer of the overall security strategy and should be complemented by back-end validations to create a fully secure EHR application.</p></small>
+
+
+            </div>
+        </div>
+    </div>
+    
+
+    <hr style="margin-top: 10em;">
+    <div class="container">
+        <div class="text-center">
+            <h1>Let's build something together</h1>
+            <div class="row footer">
+                <div class="col-lg-4">
+                    <div class="action">Email</div>
+                    <div><a class="action-link" href="mailto:dasarisravya96@gmail.com">Dasarisravya96@gmail.com</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="action">
+                        Reach out
+                    </div>
+                    <div>
+                        <a class="action-link" href="https://www.linkedin.com/in/dasarisravya/" target="_blank">Linkedin
+                            Profile</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="action">
+                        Resume
+                    </div>
+                    <div>
+
+                        <a class="action-link" href="https://www.linkedin.com/in/dasarisravya/" target="_blank">Just
+                            Ask</a>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

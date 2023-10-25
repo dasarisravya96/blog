@@ -7,6 +7,9 @@ import { LemonComponent } from './lemon/lemon.component';
 import { VerizonComponent } from './verizon/verizon.component';
 import { IntegraComponent } from './integra/integra.component';
 import { HomeComponent } from './home/home.component';
+import { BlogComponent } from './blog/blog.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { PermissionsblogComponent } from './permissionsblog/permissionsblog.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { HomeComponent } from './home/home.component';
     LemonComponent,
     VerizonComponent,
     IntegraComponent,
-    HomeComponent
+    HomeComponent,
+    BlogComponent,
+    NavbarComponent,
+    PermissionsblogComponent
   ],
   imports: [
     BrowserModule,

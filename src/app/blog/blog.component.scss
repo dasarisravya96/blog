@@ -1,0 +1,92 @@
+h1{
+    font-family: rgb(195, 18, 18),sans-serif;
+}
+.avatar {
+    width: 178px;
+    //align center
+}
+.description{
+    text-align: center;
+    letter-spacing: 0;
+    text-transform: none;
+    justify-content: center;
+    margin-top: 24px;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: Circular Std, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 40px;
+    display: block;
+}
+.project-block{
+    margin-top: 2em;
+}
+.project-title{
+    letter-spacing: -.2px;
+    margin-bottom: 8px;
+    margin-left: 0;
+    font-family: Circular Std, sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 28px;
+}
+.project-timeline{
+    max-width: 320px;
+    color: rgba(51, 51, 51, .25);
+    margin-top: 0;
+    margin-bottom: 16px;
+    padding-bottom: 0;
+    font-family: Circular Std, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+}
+.project-description{
+    max-width: 399px;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-family: Circular Std, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+}
+.project-image{
+    width: 100%;
+    height: 400px;
+    float: right;
+    background-color: rgba(247, 247, 247, .5);
+    border: 1px rgba(51, 51, 51, .05);
+    border-radius: 8px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.and{
+    margin-left: 1em;
+    margin-right: 1em;
+    font-family: Circular Std, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+
+}
+
+.action{
+    font-size: 18px;
+    margin-bottom: 0.7em;
+    font-weight: 500;
+    line-height: 14px;
+}
+.action-link{
+    color: rgb(231, 118, 19);
+    text-decoration: none;
+    font-family: Circular Std, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 14px;
+}
+.footer{
+    margin-top:5em;
+    margin-bottom: 10em;
+}
