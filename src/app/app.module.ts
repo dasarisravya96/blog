@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { BlogComponent } from './blog/blog.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PermissionsblogComponent } from './permissionsblog/permissionsblog.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { PosturairComponent } from './posturair/posturair.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { PermissionsblogComponent } from './permissionsblog/permissionsblog.comp
     HomeComponent,
     BlogComponent,
     NavbarComponent,
-    PermissionsblogComponent
+    PermissionsblogComponent,
+    PrivacyPolicyComponent,
+    PosturairComponent
   ],
   imports: [
     BrowserModule,

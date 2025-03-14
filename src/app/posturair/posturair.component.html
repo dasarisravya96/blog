@@ -1,0 +1,229 @@
+<div class="container">
+<app-navbar></app-navbar>
+<article>
+    <header class="text-center mb-8">
+      <div class="flex justify-center mb-6">
+        <img src="assets/images/posturair.jpg" alt="PosturAir Logo" class="rounded-full w-64 h-64 object-cover shadow-lg" width="25%" height="25%">
+      </div>
+      <h1 class="text-4xl font-bold">AirPods Pro & The Posture Fix: My Journey from Idea to Build</h1>
+    </header>
+  
+    <section>
+      <p>
+        It all started on a regular day when I realized I was slouching more than usual. I was playing around with my AirPods Pro, which I'd always thought were just great for music and calls. One afternoon, as I fiddled with them, I read about the cool sensors inside these earphones that could track movement and even slight head motions. That got my mind racing with ideas.
+      </p>
+      <p>
+        I thought, "What if these little gadgets could help remind me (and others) to keep a good posture?" I started picturing a simple app that would gently nudge you when you're slumping or leaning too much. It was exciting to see that these earphones weren't just a way to listen to tunes, they were packed with smart hardware that could do so much more. Plus, they were a pretty good deal, making the whole idea feel like a smart and affordable upgrade to my everyday life.
+      </p>
+      <p>
+        Then came the twist with AI. I was already exploring tech projects and found that using NativeScript made building cross-platform apps a breeze. That's when I decided to mix in TensorFlow.js to create a model that learns your posture over time. With AI in the mix, the app could not only track your movements but also figure out patterns and give you personalized tips to stay straight. It felt like having a little coach right in your ear, thanks to some clever coding and smart sensors.
+      </p>
+      <p>
+        Before long, I was imagining an app that worked seamlessly with the AirPods Pro, helping people stay healthy without feeling like they were being bossed around. It was a mix of a personal need because I wanted to improve my own posture and a spark of creativity that turned a simple gadget into something really useful, smart, and fun.
+      </p>
+      <p>
+        This app uses AirPods Pro's motion sensors to monitor and correct user posture in real-time, leveraging TensorFlow.js for intelligent posture detection.
+      </p>
+    </section>
+  
+    <section>
+      <h2>Technologies Used</h2>
+      <ul>
+        <li>NativeScript: Core framework for building native mobile applications</li>
+        <li>TypeScript: Everyone knows our main guy TS</li>
+        <li>TensorFlow.js: Machine learning library that we'll use for posture prediction</li>
+        <li>CoreMotion Framework: iOS framework for accessing AirPods Pro motion data</li>
+        <li>Tailwind CSS: CSS Framework</li>
+      </ul>
+      <p>
+        The result is a sophisticated yet user-friendly tool for posture monitoring and correction, showcasing how modern web technologies can be leveraged to create meaningful health applications.
+      </p>
+    </section>
+  
+    <section>
+      <h2>Project Structure and Components</h2>
+      <h3>Core Application Setup</h3>
+      <p>The application's entry point is defined in <code>app/app.ts</code>:</p>
+      <pre ngNonBindable><code>import {{ '{' }} Application {{ '}' }} from '@nativescript/core';
+  
+  // Enable iOS motion usage
+  if (global.isIOS) {{ '{' }}
+      const device = UIDevice.currentDevice;
+      device.beginGeneratingDeviceOrientationNotifications();
+  {{ '}' }}
+  
+  Application.run({{ '{' }} moduleName: 'app-root' {{ '}' }});
+      </code></pre>
+  
+      <h3>Navigation and Routing</h3>
+      <p>The app uses a frame-based navigation system (<code>app/app-root.xml</code>):</p>
+      <pre ngNonBindable><code>&lt;Frame defaultPage="main-page"&gt;
+  &lt;/Frame&gt;
+      </code></pre>
+  
+      <h3>User Interface Components</h3>
+      <p><strong>Main Page (<code>app/main-page.xml</code>)</strong> consists of:</p>
+      <ul>
+        <li>Status display for AirPods connection</li>
+        <li>Real-time angle visualization</li>
+        <li>Posture status indicator</li>
+        <li>Calibration controls</li>
+        <li>Debug information panel</li>
+      </ul>
+      <p>
+        <strong>Settings Page (<code>app/settings-page.xml</code>)</strong> handles device connection status, calibration procedures, and configuration options.
+      </p>
+    </section>
+  
+    <section>
+      <h2>Core Features Implementation</h2>
+      <h3>PostureViewModel (<code>app/main-view-model.ts</code>)</h3>
+      <p>This is the heart of the application, implementing device connection management and posture monitoring.</p>
+      <p><em>Device Connection Management:</em></p>
+      <pre ngNonBindable><code>private checkConnection() {{ '{' }}
+    if (!this.motionManager || !this.mainQueue) return;
+    
+    this.motionManager.startDeviceMotionUpdatesToQueueWithHandler(
+      this.mainQueue,
+      (motion: any, error: any) => {{ '{' }}
+        this._airPodsConnected = motion !== null;
+        // ... connection handling logic
+      {{ '}' }}
+    );
+  {{ '}' }}
+      </code></pre>
+  
+      <p><em>Posture Monitoring:</em></p>
+      <pre ngNonBindable><code>private async processMotionData(motion: any) {{ '{' }}
+    const pitchDegrees = Math.abs(motion.attitude.pitch * (180 / Math.PI));
+    // ... motion processing and ML prediction
+  {{ '}' }}
+      </code></pre>
+  
+      <p><em>Calibration System:</em></p>
+      <pre ngNonBindable><code>public calibrateGoodPosture() {{ '{' }}
+    // ... calibration logic for good posture
+  {{ '}' }}
+      </code></pre>
+  
+      <h3>Machine Learning Integration (<code>app/services/PostureMLService.ts</code>)</h3>
+      <p>
+        The ML service uses TensorFlow.js to train a model on user-specific posture data and make real-time predictions:
+      </p>
+      <pre ngNonBindable><code>private async initializeModel() {{ '{' }}
+    await tf.ready();
+    
+    this.model = tf.sequential({{ '{' }}
+      layers: [
+        tf.layers.lstm({{ '{' }}
+          units: 32,
+          inputShape: [this.SEQUENCE_LENGTH, this.NUM_FEATURES],
+          returnSequences: false
+        {{ '}' }}),
+        // ... model architecture
+      ]
+    {{ '}' }});
+  {{ '}' }}
+      </code></pre>
+    </section>
+  
+    <section>
+      <h2>Technical Deep Dive</h2>
+      <h3>Motion Data Processing</h3>
+      <p>
+        The app processes three key measurements from AirPods Pro:
+      </p>
+      <ul>
+        <li>Pitch (forward/backward head tilt)</li>
+        <li>Roll (side-to-side tilt)</li>
+        <li>Yaw (horizontal rotation)</li>
+      </ul>
+      <h3>Machine Learning Model Architecture</h3>
+      <p>
+        The model uses an LSTM (Long Short-Term Memory) neural network to analyze sequences of motion data:
+      </p>
+      <p><strong>Input:</strong> 30 timesteps of 3D motion data</p>
+      <p><strong>LSTM layer:</strong> 32 units</p>
+      <p><strong>Dense layers:</strong> for feature extraction</p>
+      <p><strong>Output:</strong> Sigmoid activation for binary classification</p>
+      <p>
+        <img src="assets/images/lstmposturair.png" alt="LSTM posture model architecture" style="max-width: 100%;">
+      </p>
+      <h3>Calibration Process</h3>
+      <p>
+        The calibration system collects 50 samples of motion data, processes and normalizes the data, trains the ML model on good/bad posture examples, and establishes a threshold for posture detection.
+      </p>
+      <h3>Real-time Monitoring</h3>
+      <p>
+        The monitoring system buffers 30 frames of motion data, feeds the buffer through the ML model, provides immediate feedback on posture, and updates UI elements in real-time.
+      </p>
+    </section>
+  
+    <section>
+      <h2>Development Environment</h2>
+      <p>
+        The project uses:
+      </p>
+      <ul>
+        <li>NativeScript CLI for development</li>
+        <li>Webpack for bundling and polyfills</li>
+        <li>Tailwind CSS for styling</li>
+        <li>TypeScript for type safety</li>
+      </ul>
+      <p>
+        <strong>Project Configuration</strong> includes:
+      </p>
+      <ul>
+        <li>
+          <strong>Webpack Configuration (<code>webpack.config.js</code>):</strong> handles polyfills for Node.js modules, buffer and process shims, and TensorFlow.js dependencies.
+        </li>
+        <li>
+          <strong>TypeScript Configuration (<code>tsconfig.json</code>):</strong> enables ES2020 features, decorator metadata, module resolution, and path aliases.
+        </li>
+      </ul>
+      <p>
+        The styling system leverages Tailwind CSS with custom utilities for responsive layouts, custom components, dynamic theming, and platform-specific styles.
+      </p>
+    </section>
+  
+    <section>
+      <h2>Download and Try</h2>
+      <p>
+        Explore the project to see how a random day, a pair of cool earphones, and a dash of AI can turn into a meaningful health application. Enjoy the journey from idea to build!
+      </p>
+    </section>
+  </article>
+  <div class="container">
+    <div class="text-center">
+        <h1>Let's build something together</h1>
+        <div class="row footer">
+            <div class="col-lg-4">
+                <div class="action">Email</div>
+                <div><a class="action-link" href="mailto:dasarisravya96@gmail.com">Dasarisravya96@gmail.com</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="action">
+                    Reach out
+                </div>
+                <div>
+                    <a class="action-link" href="https://www.linkedin.com/in/dasarisravya/" target="_blank">Linkedin
+                        Profile</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="action">
+                    Resume
+                </div>
+                <div>
+
+                    <a class="action-link" href="https://www.linkedin.com/in/dasarisravya/" target="_blank">Just
+                        Ask</a>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
