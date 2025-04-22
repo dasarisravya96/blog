@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PermissionsblogComponent } from './permissionsblog/permissionsblog.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { PosturairComponent } from './posturair/posturair.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PosturairComponent } from './posturair/posturair.component';
     NavbarComponent,
     PermissionsblogComponent,
     PrivacyPolicyComponent,
-    PosturairComponent
+    PosturairComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
