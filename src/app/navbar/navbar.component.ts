@@ -13,7 +13,7 @@ export class NavbarComponent {
       const a = document.createElement('a');
       a.href = url;
       a.target = '_blank';
-      a.download = 'Resume-Sravya-Datari.pdf';
+      a.download = 'Resume-Sravya-Dasari.pdf';
       // For Safari / some browsers, append to body to ensure click works
       document.body.appendChild(a);
       a.click();
