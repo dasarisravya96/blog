@@ -9,7 +9,7 @@ export class NavbarComponent {
   // Trigger download of the resume PDF in assets.
   downloadResume(): void {
     try {
-      const url = '/assets/documents/Resume-Sravya-Datari.pdf';
+      const url = '/assets/Resume-Sravya-Dasari.pdf';
       const a = document.createElement('a');
       a.href = url;
       a.target = '_blank';
@@ -20,7 +20,7 @@ export class NavbarComponent {
       a.remove();
     } catch (e) {
       // fallback: open in new tab
-      window.open('/assets/documents/Resume-Sravya-Datari.pdf', '_blank');
+      window.open('/assets/Resume-Sravya-Dasari.pdf', '_blank');
     }
   }
 
