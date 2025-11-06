@@ -90,3 +90,73 @@ h1{
     margin-top:5em;
     margin-bottom: 10em;
 }
+
+/* Resume modal styles */
+.resume-button{
+    background: transparent;
+    border: none;
+    color: rgb(231, 118, 19);
+    font-family: Circular Std, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+}
+
+.resume-modal-backdrop{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    padding: 1rem;
+}
+
+.resume-modal{
+    background: #fff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    padding: 1.6rem;
+    outline: none;
+}
+
+.resume-modal h3{
+    margin: 0 0 0.5rem 0;
+    font-size: 20px;
+}
+
+.modal-desc{
+    margin: 0 0 1rem 0;
+    color: #444;
+    font-size: 14px;
+}
+
+.modal-actions{
+    display: flex;
+    gap: 0.6rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btn-download{
+    display: inline-block;
+    background: rgb(231, 118, 19);
+    color: #fff;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-close{
+    background: transparent;
+    border: none;
+    color: #666;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+}

@@ -6,5 +6,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  // Trigger download of the resume PDF in assets.
+  downloadResume(): void {
+    try {
+      const url = '/assets/documents/Resume-Sravya-Datari.pdf';
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.download = 'Resume-Sravya-Datari.pdf';
+      // For Safari / some browsers, append to body to ensure click works
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    } catch (e) {
+      // fallback: open in new tab
+      window.open('/assets/documents/Resume-Sravya-Datari.pdf', '_blank');
+    }
+  }
 
 }

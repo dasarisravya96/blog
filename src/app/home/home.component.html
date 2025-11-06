@@ -116,11 +116,21 @@
                         Resume
                     </div>
                     <div>
-
-                        <a class="action-link" href="https://www.linkedin.com/in/dasarisravya/" target="_blank">Just
-                            Ask</a>
-                        <div>
-                        </div>
+                        <!-- Open resume download modal -->
+                        <button class="action-link resume-button" (click)="openResumeModal()" type="button">
+                            Download Resume
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Resume modal popup -->
+            <div *ngIf="showResumeModal" class="resume-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+                <div class="resume-modal" tabindex="-1">
+                    <h3 id="resume-modal-title">Download Resume</h3>
+                    <p class="modal-desc">You can download the resume directly. Click the button below to save it to your device.</p>
+                    <div class="modal-actions">
+                        <a class="btn-download" href="/assets/documents/Resume-Sravya-Datari.pdf" download="Resume-Sravya-Datari.pdf" (click)="closeResumeModal()" target="_blank" rel="noopener">Download PDF</a>
+                        <button class="btn-close" (click)="closeResumeModal()" type="button">Close</button>
                     </div>
                 </div>
             </div>
